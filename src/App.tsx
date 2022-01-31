@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Card, { CardVariant } from './components/Card';
+import UserList from './components/UserList';
+import { IUser } from './types/types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const users: IUser[] = [
+		{
+			id: 1,
+			name: 'Alex Shall',
+			email: 'ash@mail.com',
+			address: { city: 'Warszaw', street: 'Grono', zipcode: '1234' }
+		},
+		{
+			id: 2,
+			name: 'Adom Shill',
+			email: 'ash@mail.com',
+			address: { city: 'Wroclaw', street: 'Granda', zipcode: '124' }
+		}
+	];
+	return (
+		<div>
+			<Card
+				// onClick={(num) => console.log('click', num)}
+				variant={CardVariant.outlined}
+				width="200px"
+				height="200px">
+				<button>Button</button>
+				<div>
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
+					odio numquam inventore quod voluptate reiciendis delectus pariatur
+					vitae repudiandae modi nobis mollitia perspiciatis doloremque
+					voluptas, facere corrupti nihil at? Tempore?
+				</div>
+			</Card>
+			<UserList users={users} />
+		</div>
+	);
+};
 
 export default App;
